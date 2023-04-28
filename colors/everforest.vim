@@ -10,7 +10,7 @@
 let s:configuration = everforest#get_configuration()
 let s:palette = everforest#get_palette(s:configuration.background, s:configuration.colors_override)
 let s:path = expand('<sfile>:p') " the path of this script
-let s:last_modified = 'Thu Apr 20 22:42:26 UTC 2023'
+let s:last_modified = 'Sun Apr 16 21:11:02 UTC 2023'
 let g:everforest_loaded_file_types = []
 
 if !(exists('g:colors_name') && g:colors_name ==# 'everforest' && s:configuration.better_performance)
@@ -26,7 +26,9 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 
   finish
 endif
 " }}}
+
 " Common Highlight Groups: {{{
+
 " UI: {{{
 if s:configuration.transparent_background >= 1
   call everforest#highlight('Normal', s:palette.fg, s:palette.none)
@@ -244,9 +246,9 @@ if has('nvim')
 endif
 " }}}
 " Syntax: {{{
-call everforest#highlight('Boolean', s:palette.purple, s:palette.none)
-call everforest#highlight('Number', s:palette.purple, s:palette.none)
-call everforest#highlight('Float', s:palette.purple, s:palette.none)
+call everforest#highlight('Boolean', s:palette.pink, s:palette.none)
+call everforest#highlight('Number', s:palette.pink, s:palette.none)
+call everforest#highlight('Float', s:palette.pink, s:palette.none)
 if s:configuration.enable_italic
   call everforest#highlight('PreProc', s:palette.purple, s:palette.none, 'italic')
   call everforest#highlight('PreCondit', s:palette.purple, s:palette.none, 'italic')
@@ -281,8 +283,8 @@ call everforest#highlight('Special', s:palette.yellow, s:palette.none)
 call everforest#highlight('SpecialChar', s:palette.yellow, s:palette.none)
 call everforest#highlight('Type', s:palette.yellow, s:palette.none)
 call everforest#highlight('Function', s:palette.green, s:palette.none)
-call everforest#highlight('String', s:palette.green, s:palette.none)
-call everforest#highlight('Character', s:palette.green, s:palette.none)
+call everforest#highlight('String', s:palette.purple, s:palette.none)
+call everforest#highlight('Character', s:palette.purple, s:palette.none)
 call everforest#highlight('Constant', s:palette.aqua, s:palette.none)
 call everforest#highlight('Macro', s:palette.aqua, s:palette.none)
 call everforest#highlight('Identifier', s:palette.blue, s:palette.none)
@@ -297,6 +299,7 @@ endif
 call everforest#highlight('Delimiter', s:palette.fg, s:palette.none)
 call everforest#highlight('Ignore', s:palette.grey1, s:palette.none)
 call everforest#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
+
 " }}}
 " Predefined Highlight Groups: {{{
 call everforest#highlight('Fg', s:palette.fg, s:palette.none)
@@ -2423,10 +2426,12 @@ highlight! link goVarArgs Grey
 " nvim-treesitter/nvim-treesitter {{{
 highlight! link goTSInclude Purple
 highlight! link goTSNamespace Fg
+highlight! link goTSProperty Identifier
 highlight! link goTSConstBuiltin AquaItalic
 if has('nvim-0.8.0')
   highlight! link @include.go goTSInclude
   highlight! link @namespace.go goTSNamespace
+  highlight! link @property.go goTSProperty
   highlight! link @constant.builtin.go goTSConstBuiltin
 endif
 if has('nvim-0.9.0')
