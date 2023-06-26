@@ -61,7 +61,7 @@ function! everforest#get_palette(background, colors_override) "{{{
             \ 'bg_blue':    ['#ecf5ed',   '117'],
             \ 'bg_yellow':  ['#fef2d5',   '226'],
             \ }
-    endif "}}}
+    endif "}}}i
   elseif a:background ==# 'medium' "{{{
     if &background ==# 'dark'
       let palette1 = {
@@ -131,9 +131,11 @@ function! everforest#get_palette(background, colors_override) "{{{
     let palette2 = {
           \ 'fg':         ['#d3c6aa',   '223'],
           \ 'red':        ['#e67e80',   '167'],
+          \ 'orange_red': ['#FE7526',   '167'],
           \ 'orange':     ['#e69875',   '208'],
           \ 'yellow':     ['#dbbc7f',   '214'],
           \ 'green':      ['#a7c080',   '142'],
+          \ 'lemon_green':['#8FF51A',   '142'],
           \ 'pink':       ['#de7195',   '142'],
           \ 'aqua':       ['#83c092',   '108'],
           \ 'blue':       ['#7fbbb3',   '109'],
@@ -167,7 +169,7 @@ function! everforest#get_palette(background, colors_override) "{{{
           \ }
   endif "}}}
   return extend(extend(palette1, palette2), a:colors_override)
-endfunction "}}}
+endfunction "}}}i
 function! everforest#highlight(group, fg, bg, ...) "{{{
   execute 'highlight' a:group
         \ 'guifg=' . a:fg[0]
